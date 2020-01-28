@@ -24,14 +24,15 @@ function load (dir, cb) {
 
 /**
  * init router
+ * @param {any} app app实例对象
  */
-function initRouter () {
+function initRouter (app) {
     const router = new Router()
     load('routes', (filename, routes) => {
+        routes = typeof routes === 'function' ? routes(app) : routes
         const prefix = filename === 'index' ? '' : '/' + filename
         Object.keys(routes).forEach(key => {
             const [method, path] = key.split(' ')
-            console.log(method.toLocaleUpperCase(), prefix, path)
 
             // regist routes
             router[method](prefix + path, routes[key])
@@ -41,4 +42,15 @@ function initRouter () {
     return router
 }
 
-module.exports = { initRouter }
+/**
+ * init controller
+ * @param {any} app app实例对象
+ */
+function initController (app) {
+    const controllers = {}
+    load('controller', (filename,    controller) => {
+        controllers[filename] = controller
+    })
+    return controllers
+}
+module.exports = { initRouter, initController }
