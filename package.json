@@ -4,7 +4,8 @@
   "description": "A MVC framework based on Koa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon",
+    "dev": "nodemon"    
   },
   "repository": {
     "type": "git",
