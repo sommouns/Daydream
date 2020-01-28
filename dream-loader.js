@@ -84,6 +84,13 @@ function loadConfig(app) {
             })
             app.$db.sync()
         }
+
+        if(conf.middleware) {
+            conf.middleware.forEach(mid => {
+                const midPath = path.resolve(__dirname, 'middleware', mid)
+                app.$app.use(require(midPath))
+            })
+        }
     })
 }
 
