@@ -66,4 +66,25 @@ function initService () {
     })
     return services
 }
-module.exports = { initRouter, initController, initService }
+
+
+/**
+ * init config
+ * @param {any} app app实例对象
+ */
+function loadConfig(app) {
+    load('config', (filename, conf) => {
+
+        // mysql
+        if (conf.db) {
+            app.$db = new (require('sequelize'))(conf.db)
+            app.$model = {}
+            load('model', (filename, {schema = {}, options = {}}) => {
+                app.$model[filename] = app.$db.define(filename, schema, options)
+            })
+            app.$db.sync()
+        }
+    })
+}
+
+module.exports = { initRouter, initController, initService, loadConfig }
