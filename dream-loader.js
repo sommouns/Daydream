@@ -24,7 +24,6 @@ function load (dir, cb) {
 
 /**
  * init router
- * @param {any} app app实例对象
  */
 function initRouter (app) {
     const router = new Router()
@@ -35,7 +34,10 @@ function initRouter (app) {
             const [method, path] = key.split(' ')
 
             // regist routes
-            router[method](prefix + path, routes[key])
+            router[method](prefix + path, async ctx => {
+                app.ctx = ctx
+                await routes[key](app)
+            })
         })
     })
 
@@ -48,9 +50,20 @@ function initRouter (app) {
  */
 function initController (app) {
     const controllers = {}
-    load('controller', (filename,    controller) => {
+    load('controller', (filename, controller) => {
         controllers[filename] = controller
     })
     return controllers
 }
-module.exports = { initRouter, initController }
+
+/**
+ * init service
+ */
+function initService () {
+    const services = {}
+    load('service', (filename, service) => {
+        services[filename] = service
+    })
+    return services
+}
+module.exports = { initRouter, initController, initService }

@@ -1,8 +1,8 @@
 module.exports = {
-    index: async ctx => {
-        ctx.body = 'Index'
+    index: async app => {
+        app.ctx.body = 'Index'
     },
-    detail: async ctx => {
-        ctx.body = 'detail page'
+    detail: async app => {
+        app.ctx.body = 'detail page'
     }
 }
