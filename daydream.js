@@ -1,10 +1,11 @@
 const koa = require('koa')
-const { initRouter, initController, initService, loadConfig } = require('./dream-loader')
+const { initRouter, initController, initService, loadConfig, initSchedule } = require('./dream-loader')
 
 module.exports = class Daydream {
     constructor(conf) {
         this.$app = new koa(conf)
         loadConfig(this)
+        initSchedule(this)
         this.$service = initService()
         this.$ctrl = initController()
         this.$router = initRouter(this)

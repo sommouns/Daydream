@@ -67,6 +67,15 @@ function initService () {
     return services
 }
 
+/**
+ * init schedule
+ */
+function initSchedule(app) {
+    load('schedule', (filename, {interval, handler}) => {
+        require('node-schedule').scheduleJob(interval, (app) => {handler(app)})
+    })
+}
+
 
 /**
  * init config
@@ -94,4 +103,4 @@ function loadConfig(app) {
     })
 }
 
-module.exports = { initRouter, initController, initService, loadConfig }
+module.exports = { initRouter, initController, initService, loadConfig, initSchedule }
