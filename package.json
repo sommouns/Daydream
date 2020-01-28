@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "dev": "nodemon"    
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,8 @@
   "homepage": "https://github.com/sommouns/Daydream#readme",
   "dependencies": {
     "koa": "^2.11.0",
-    "koa-router": "^8.0.6"
+    "koa-router": "^8.0.6",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3"
   }
 }

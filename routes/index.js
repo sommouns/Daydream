@@ -1,4 +1,6 @@
 module.exports = app => ({
-    'get /': app.$ctrl.home.index,
+    'get /': async () => {
+        await app.$ctrl.home.index(app)
+    },
     'get /detail': app.$ctrl.home.detail
 })
