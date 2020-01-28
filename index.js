@@ -1,8 +1,7 @@
-const app = new (require('koa'))()
+const Daydream = require('./daydream')
 
-// regist router
-const {initRouter} = require('./dream-loader')
-app.use(initRouter().routes())
+const app = new Daydream()
 
-// listen port
-app.listen(3000)
+app.start(3000, () => {
+    console.log('Daydream app is running at localhost: 3000')
+})
