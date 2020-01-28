@@ -1,0 +1,29 @@
+{
+  "name": "daydream",
+  "version": "1.0.0",
+  "description": "A MVC framework based on Koa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sommouns/Daydream.git"
+  },
+  "keywords": [
+    "koa",
+    "node",
+    "js",
+    "mvc"
+  ],
+  "author": "sommouns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sommouns/Daydream/issues"
+  },
+  "homepage": "https://github.com/sommouns/Daydream#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.6"
+  }
+}
