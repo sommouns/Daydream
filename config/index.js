@@ -5,5 +5,6 @@ module.exports = {
         database: 'test',
         username: 'root',
         password: 'example'
-    }
+    },
+    middleware: ['error-handler']
 }
